@@ -1,11 +1,6 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        int ul=nums[0], found, i, j;
-        for( i=0; i<nums.length; i++)
-        {
-            if(nums[i]>ul)
-            ul= nums[i];
-        }
+        int ul= nums.length, found, i, j;
         for(i=0; i<=ul; i++)
         {
             found=0;
