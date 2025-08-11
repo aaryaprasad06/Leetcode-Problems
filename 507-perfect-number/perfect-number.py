@@ -3,11 +3,13 @@ class Solution:
         if num<=1:
             return False
         sum=1
-        for i in range (2, int(math.sqrt(num)+1)):
+        i=2
+        while i*i <= num:
             if num%i==0:
                 sum= sum+ i
                 if i!= num//i:
                     sum= sum + num//i
+            i+=1
         return sum==num
 
         
