@@ -1,11 +1,14 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        dict={}
-        for i in nums:
-            if i not in dict:
-                dict[i]=1 
+        majority=nums[0]
+        votes=1
+        for i in range(1, len(nums)):
+            if (votes==0):
+                votes+=1
+                majority= nums[i]
+            elif majority==nums[i]:
+                votes+=1
             else:
-                dict[i]+=1 
-        max_key= max(dict, key=dict.get)
-        return max_key
+                votes-=1
+        return majority
         
