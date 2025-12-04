@@ -4,10 +4,12 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         n= len(nums)
-        last_non_zero=0
-        for current in range(n):
-            if nums[current]!=0:
-                if current !=last_non_zero:
-                    nums[last_non_zero]= nums[current]
-                    nums[current]= 0
-                last_non_zero+=1
+        j=0
+        for i in range(n):
+            if nums[i]!=0:
+                nums[j], nums[i]= nums[i], nums[j]
+                j=j+1
+                
+
+
+        
