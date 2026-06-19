@@ -3,8 +3,27 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        n= len(nums)
-        for i in range(n-1):
-            for j in range(n-1-i):
-                if nums[j] > nums[j+1]:
-                    nums[j], nums[j+1]= nums[j+1], nums[j]
+        c0=0
+        c1=0
+        c2=0
+        for i in range(len(nums)):
+            if nums[i]==0:
+                c0+=1
+            elif nums[i]==1:
+                c1+=1
+            else:
+                c2+=1 
+        k=0
+        while k< len(nums) and c0>0:
+            nums[k]=0
+            c0-=1
+            k+=1
+        while k< len(nums) and c1>0:
+            nums[k]=1
+            c1-=1
+            k+=1
+        while k< len(nums) and c2>0:
+            nums[k]=2
+            c2-=1
+            k+=1
+        
