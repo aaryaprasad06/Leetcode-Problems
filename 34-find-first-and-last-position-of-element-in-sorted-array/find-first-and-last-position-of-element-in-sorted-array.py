@@ -1,15 +1,30 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        if target not in nums:
-            return [-1, -1]
+        def findLeft(nums, target):
+            low= 0
+            high= len(nums)-1
+            while low<=high:
+                mid= (low+high)//2
+                if nums[mid]<target:
+                    low= mid+1
+                else:
+                    high= mid-1
+            return low
 
-        answer=[]
-        for i in range(len(nums)):
-            if nums[i]==target:
-                answer.append(i)
-                break
-        for i in range(len(nums)-1, -1, -1):
-            if nums[i]==target:
-                answer.append(i)
-                break
-        return answer
+        def findRight(nums, target):
+            low=0
+            high= len(nums)-1
+            while low<=high:
+                mid=(low+high)//2
+                if nums[mid] <= target:
+                    low= mid+1
+                else:
+                    high= mid-1
+            return high
+        
+        left= findLeft(nums, target)
+        right= findRight(nums, target)
+
+        if left>right or left==len(nums) or nums[left]!=target:
+            return [-1, -1]
+        return [left, right]
