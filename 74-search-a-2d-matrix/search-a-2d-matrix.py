@@ -1,28 +1,16 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        def bs(nums, target):
-            low= 0
-            high= len(nums)-1
-            if target > nums[high]:
-                return False
-            if len(nums)==2:
-                if nums[0]==target or nums[1]==target:
-                    return True
-                else:
-                    return False
-            while low<=high:
-                mid= (low+high)//2
-                if nums[mid]==target:
-                    return True
-                elif nums[mid] < target:
-                    low= mid+1
-                else:
-                    high= mid-1
-        
-        for nums in matrix:
-            res= bs(nums, target)
-            if res==True:
+        m, n= len(matrix), len(matrix[0])
+        low=0
+        high= m*n-1
+
+        while low<=high:
+            mid= (low+high)//2
+            num= matrix[mid//n][mid%n]
+            if num==target:
                 return True
-            
+            elif num < target:
+                low= mid+1
+            else:
+                high= mid-1
         return False
-            
