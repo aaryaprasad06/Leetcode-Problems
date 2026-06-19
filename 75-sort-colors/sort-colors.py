@@ -3,27 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        c0=0
-        c1=0
-        c2=0
-        for i in range(len(nums)):
-            if nums[i]==0:
-                c0+=1
-            elif nums[i]==1:
-                c1+=1
+        low=0
+        mid=0
+        high= len(nums)-1
+
+        while mid<=high:
+            if nums[mid]==0:
+                nums[low], nums[mid]= nums[mid], nums[low]
+                low+=1
+                mid+=1
+            elif nums[mid]==1:
+                mid+=1
             else:
-                c2+=1 
-        k=0
-        while k< len(nums) and c0>0:
-            nums[k]=0
-            c0-=1
-            k+=1
-        while k< len(nums) and c1>0:
-            nums[k]=1
-            c1-=1
-            k+=1
-        while k< len(nums) and c2>0:
-            nums[k]=2
-            c2-=1
-            k+=1
+                nums[mid], nums[high]= nums[high], nums[mid]
+                high-=1
         
