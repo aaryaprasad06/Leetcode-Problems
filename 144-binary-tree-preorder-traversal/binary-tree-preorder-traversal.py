@@ -8,16 +8,16 @@ class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        solution=[]
-        stack=[root]
-        while stack: 
-            current= stack.pop()
-            solution.append(current.val)
-                
-            if current.right:
-                stack.append(current.right)
-                
-            if current.left:
-                stack.append(current.left)
 
-        return solution
+        ans=[]
+        stack=[root]
+
+        while stack:
+            curr= stack.pop()
+            ans.append(curr.val)
+
+            if curr.right:
+                stack.append(curr.right)
+            if curr.left:
+                stack.append(curr.left)        
+        return ans
