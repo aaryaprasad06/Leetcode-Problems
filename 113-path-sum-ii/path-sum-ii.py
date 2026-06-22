@@ -11,9 +11,8 @@ class Solution:
         remaining= targetSum- root.val
         if not root.left and not root.right and remaining==0:
             return [[root.val]]
-        
-            
-        
+        if not root.left and not root.right:
+            return []
         left= self.pathSum(root.left, remaining)
         right= self.pathSum(root.right, remaining)
         return [[root.val]+ path for path in left+right]
