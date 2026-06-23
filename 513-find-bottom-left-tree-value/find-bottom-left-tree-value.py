@@ -11,16 +11,18 @@ class Solution:
             return []
         
         que= deque([root])
-        res= []
+        bottom_left=0
         while que:
             ls= len(que)
             for i in range(ls):
                 node= que.popleft()
-                if node.right:
-                    que.append(node.right)
+                if i==0:
+                    bottom_left= node.val
                 if node.left:
                     que.append(node.left)
-            res.append(node.val)
-        return res[-1]
+                if node.right:
+                    que.append(node.right)
+            
+        return bottom_left
 
                 
