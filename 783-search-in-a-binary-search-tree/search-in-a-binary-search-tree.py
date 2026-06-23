@@ -21,17 +21,3 @@ class Solution:
             
         
         return node
-        
-        # que=deque([node])
-        # res=[]
-        # while que:
-        #     ls= len(que)
-        #     for i in range(ls):
-        #         n=que.popleft()
-        #         if n.left:
-        #             que.append(n.left)
-        #         if n.right:
-        #             que.append(n.right)
-        #         res.append(n.val)
-        # return res
-        
