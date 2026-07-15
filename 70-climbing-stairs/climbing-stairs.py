@@ -1,18 +1,10 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        memory={}
+        ways= []
+        ways.append(1)
+        ways.append(2)
 
-        def climb(n):
-            if n == 1:
-                return 1
-            if n ==  2:
-                return 2
-            if n in memory:
-                return memory[n]
-            else:
-                result = climb(n-1) + climb(n-2)
-                memory[n] = result
-
-            return result
+        for i in range(2, n):
+            ways.append(ways[i-1] + ways[i-2])
         
-        return climb(n)
+        return ways[n-1]
