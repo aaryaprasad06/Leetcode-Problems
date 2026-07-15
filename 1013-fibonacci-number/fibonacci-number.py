@@ -1,15 +1,17 @@
 class Solution:
     def fib(self, n: int) -> int:
-        if n==1 or n==2:
-            return 1  
-        a=0
-        b=1
-        c=0
-        while n>1:
-            c=a+b
-            a=b
-            b=c
-            n-=1
-        return c
+        memory= {}
+
+        def helper(n):
+            if n == 0: return 0
+            if n == 1: return 1 
+            
+            if n in memory:
+                return memory[n]
+            else:
+                result = helper(n-1) + helper(n-2)
+                memory[n] = result
+            
+            return result
         
-        
+        return helper(n)
