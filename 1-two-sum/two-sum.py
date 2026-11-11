@@ -4,5 +4,5 @@ class Solution:
         for i in range(len(nums)):
             comp= target- nums[i]
             if comp in d:
-                return [i, d[comp]]
+                return [d[comp], i]
             d[nums[i]]= i
